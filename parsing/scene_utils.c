@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:36:25 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 21:28:29 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/10/24 21:55:56 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,6 @@ int	get_scene_info(t_scene *scene, char *filename)
 		error_exit(scene, EMPTY_ERR);
 	free(scene->pars->unsplit);
 	get_map_layout(scene, conf_map);
-	i = 0;
-	// while (conf_map[i])
-	// 	free(conf_map[i++]);
-	// free(conf_map);
 	return (1);
 }
 

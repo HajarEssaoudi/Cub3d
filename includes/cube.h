@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:20:29 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/10/24 17:44:39 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/10/24 22:21:37 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define FOV 50
 # define W 119
 # define S 115
-# define A 976
+# define A 97
 # define D 100
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363

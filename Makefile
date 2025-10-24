@@ -40,6 +40,9 @@ fclean: clean
 	make -C includes/libft fclean
 
 run: all clean
-	valgrind --leak-check=full ./$(NAME) maps/scene.cub
+	./$(NAME) maps/scene.cub
+
+valgrind: all clean
+	valgrind --leak-check=full --track-origins=yes ./$(NAME) maps/scene.cub
 
 re: fclean all

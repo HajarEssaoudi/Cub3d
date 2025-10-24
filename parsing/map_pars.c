@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 22:48:37 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/09/20 22:22:01 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/10/24 22:32:05 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,16 @@ int	validate_map(t_scene *scene, char **map)
 	char	**padded;
 
 	if (!map || !map[0])
-		return (print_error(EMPTY_ERR), 0);
+		error_exit(NULL, EMPTY_ERR);
 	if (!check_walls(map))
-		return (print_error(WALL_ERR), 0);
+		error_exit(NULL, WALL_ERR);
 	if (!no_foreign_elements(map))
-		return (print_error(MAP_ERR), 0);
+		error_exit(NULL, MAP_ERR);
 	if (!has_unique_elements(map))
-		return (print_error(MAP_ERR), 0);
+		error_exit(NULL, MAP_ERR);
 	height_width(scene);
 	padded = add_padding(*scene);
 	if (!check_horizontal_walls(padded))
-		return (print_error(WALL_ERR), 0);
+		error_exit(NULL, WALL_ERR);
 	return (1);
 }
