@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stdgc.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 17:24:23 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/10/24 18:40:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/25 15:02:44 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_block
 {
 	void *ptr;
 	size_t size;
-	int	 used;
 	struct s_block *next;
 } t_block;
 
