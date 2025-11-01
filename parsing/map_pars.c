@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 22:48:37 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 22:32:05 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/10/29 10:23:39 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ int	check_horizontal_walls(char **map)
 
 int	validate_map(t_scene *scene, char **map)
 {
-	char	**padded;
-
 	if (!map || !map[0])
 		error_exit(NULL, EMPTY_ERR);
 	if (!check_walls(map))
@@ -116,8 +114,8 @@ int	validate_map(t_scene *scene, char **map)
 	if (!has_unique_elements(map))
 		error_exit(NULL, MAP_ERR);
 	height_width(scene);
-	padded = add_padding(*scene);
-	if (!check_horizontal_walls(padded))
+	scene->map_pad = add_padding(*scene);
+	if (!check_horizontal_walls(scene->map_pad))
 		error_exit(NULL, WALL_ERR);
 	return (1);
 }

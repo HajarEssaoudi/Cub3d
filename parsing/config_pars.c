@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_pars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 14:20:53 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 18:51:10 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/29 14:27:31 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,12 @@ int	set_color(t_scene *scene, char **colors, char id)
 		return (0);
 	if (id == 'F')
 	{
-		scene->f_colors[0] = red;
-		scene->f_colors[1] = green;
-		scene->f_colors[2] = blue;
+		scene->f_colors = (red << 16) | (green << 8) | blue; 
 		return (scene->pars->f_is_set = 1, 1);
 	}
 	if (id == 'C')
 	{
-		scene->c_colors[0] = red;
-		scene->c_colors[1] = green;
-		scene->c_colors[2] = blue;
+		scene->c_colors = (red << 16) | (green << 8) | blue;
 		return (scene->pars->c_is_set = 1, 1);
 	}
 	return (0);
@@ -113,6 +109,7 @@ int	check_id_info(t_scene *scene, char *line)
 	{
 		if (!floor_ceiling(scene, info, id[0]))
 			return (0);
+		
 	}
 	else
 		return (0);

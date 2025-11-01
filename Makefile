@@ -6,9 +6,10 @@ MLX = $(MLX_DIR)/libmlx.a
 
 SRCS = parsing/scene_utils.c parsing/check_utils.c parsing/config_pars.c \
        parsing/error_handle.c parsing/map_pars.c parsing/map_utils.c parsing/file_utils.c \
-       render/ray_cast.c render/window.c \
-       ./includes/gnl/get_next_line.c ./includes/gnl/get_next_line_utils.c \
-       ./includes/garbage_collector/stdgc.c \
+       render/ray_cast.c render/window.c render/mini_map.c\
+	   exit_game/exit_game.c \
+       includes/gnl/get_next_line.c includes/gnl/get_next_line_utils.c \
+       includes/garbage_collector/stdgc.c \
        main.c
 
 OBJS = $(SRCS:.c=.o)
@@ -40,9 +41,9 @@ fclean: clean
 	make -C includes/libft fclean
 
 run: all clean
-	./$(NAME) maps/scene.cub
+	clear ; ./$(NAME) maps/scene.cub
 
 valgrind: all clean
-	valgrind --leak-check=full --track-origins=yes ./$(NAME) maps/scene.cub
+	./$(NAME) maps/scene.cub
 
 re: fclean all

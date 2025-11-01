@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 14:00:08 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 22:39:40 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/10/29 10:43:25 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_player(t_game *game)
 
 void init_game(t_game *game, t_scene *scene)
 {
-	game->win_width = 1200;
+	game->win_width = 1500;
 	game->win_height = 900;
 	game->scene = *scene;
 	init_player(game);
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 		return (1);
 	game = ft_calloc(1, sizeof(t_game));
 	init_game(game, scene);
-	render_window(scene, game);
+	render_window(game);
 	gc_free_all();
 	return (0);
 }

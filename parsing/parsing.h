@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:37:51 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 17:54:33 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/10/29 14:27:18 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ typedef struct s_scene
 	char	*s_path;
 	char	*e_path;
 	char	*w_path;
-	int		f_colors[3];
-	int		c_colors[3];
+	int		f_colors; //to_be_changed
+	int		c_colors; //ta_hya
 	char	**map;
 	int		map_height;
 	int		map_width;
+	char	**map_pad; //to remove and add to bonus
 	t_pars	*pars;
 }	t_scene;
 
