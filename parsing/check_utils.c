@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 10:05:27 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/09/20 21:59:01 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:05:30 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ int	ft_strstr_index(const char *big, const char *small)
 	size_t	i;
 	size_t	j;
 
+	if (!big || !small)
+		return (-1);
 	if (*small == '\0')
 		return (0);
 	i = 0;
 	while (big[i] != '\0')
 	{
 		j = 0;
-		while (small[j] != '\0' && big[i + j] == small[j])
+		while (small[j] != '\0' && big[i + j] != '\0' && big[i + j] == small[j])
 			j++;
 		if (small[j] == '\0')
 			return ((int)i);

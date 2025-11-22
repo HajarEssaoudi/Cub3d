@@ -6,43 +6,45 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 11:09:46 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/31 01:38:01 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:53:53 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
-double angle_range_2pi(double angle)
+void	dda_loop(t_game *game, t_ray *ray, double *side_dx, double *side_dy)
 {
-	while (angle < 0)
-		angle += TWO_PI;
-	while (angle >= TWO_PI)
-		angle -= TWO_PI;
-	return (angle);
+	while (1)
+	{
+		if (*side_dx <= *side_dy)
+		{
+			ray->side = 0;
+			ray->map_x += ray->step_x;
+			if (game->scene.map[ray->map_y][ray->map_x] != '0'
+				&& !is_player(game->scene.map[ray->map_y][ray->map_x]))
+				break ;
+			else
+				*side_dx += ray->delta_x;
+		}
+		else
+		{
+			ray->side = 1;
+			ray->map_y += ray->step_y;
+			if (game->scene.map[ray->map_y][ray->map_x] != '0'
+				&& !is_player(game->scene.map[ray->map_y][ray->map_x]))
+				break ;
+			else
+				*side_dy += ray->delta_y;
+		}
+	}
 }
 
-void init_ray(t_game *game, double r_angle, t_ray *ray)
-{
-	r_angle = angle_range_2pi(r_angle);
-	ray->map_x = floor(game->player.x);
-	ray->map_y = floor(game->player.y);
-	ray->delta_x = fabs(1 / cos(r_angle));
-	ray->delta_y = fabs(1 / sin(r_angle));
-	if (cos(r_angle) < 0)
-		ray->step_x = -1;
-	else
-		ray->step_x = 1;
-	if (sin(r_angle) < 0)
-		ray->step_y = -1;
-	else
-		ray->step_y = 1;
-	ray->is_hit = 0;
-}
-
-double	count_dist(t_game *game, double r_angle, t_ray *ray)
+double	count_dist(t_game *game, t_ray *ray)
 {
 	double	dist_to_x;
 	double	dist_to_y;
+	double	side_dx;
+	double	side_dy;
 
 	if (ray->step_x > 0)
 		dist_to_x = ceil(game->player.x) - game->player.x;
@@ -52,78 +54,58 @@ double	count_dist(t_game *game, double r_angle, t_ray *ray)
 		dist_to_y = ceil(game->player.y) - game->player.y;
 	else
 		dist_to_y = game->player.y - floor(game->player.y);
-	ray->side_dx = dist_to_x / fabs(cos(r_angle));
-	ray->side_dy = dist_to_y / fabs(sin(r_angle));
-	while (1)
-	{
-		if (ray->is_hit)
-			break ;
-		if (ray->side_dx <= ray->side_dy)
-		{
-			ray->map_x += ray->step_x;
-			if (game->scene.map[ray->map_y][ray->map_x] == '1')
-				break ;
-			else
-				ray->side_dx += ray->delta_x;
-		}
-		else
-		{
-			ray->map_y += ray->step_y;
-			if (game->scene.map[ray->map_y][ray->map_x] == '1')
-				break ;
-			else
-				ray->side_dy += ray->delta_y;
-		}
-	}
-	if (ray->side_dx < ray->side_dy)
-		return (ray->side_dx);
+	side_dx = dist_to_x / fabs(cos(ray->angle));
+	side_dy = dist_to_y / fabs(sin(ray->angle));
+	dda_loop(game, ray, &side_dx, &side_dy);
+	get_wall_dir(ray);
+	if (ray->side == 0)
+		return (side_dx);
 	else
-		return (ray->side_dy);
+		return (side_dy);
+}
+
+void	draw_floor_ceiling(t_game *game, int x)
+{
+	int	y;
+
+	y = 0;
+	while (y < (game->win_height / 2))
+	{
+		if (game->img_data && game->img_data->addr)
+			my_mlx_pixel_put(game->img_data, x, y, game->scene.c_color);
+		y++;
+	}
+	while (y < game->win_height)
+	{
+		if (game->img_data && game->img_data->addr)
+			my_mlx_pixel_put(game->img_data, x, y, game->scene.f_color);
+		y++;
+	}
 }
 
 void	draw_ray(t_game *game, double r_angle, int x)
 {
 	double	r_distance;
 	double	perp_distance;
-	double	wall_height;
-	int		wall_end;
 	t_ray	*ray;
-	int		y;
 
-	y = 0;
 	ray = ft_calloc(1, sizeof(t_ray));
-	init_ray(game, r_angle, ray);
-	r_distance = count_dist(game, r_angle, ray);
+	init_ray(game, r_angle, ray, x);
+	r_distance = count_dist(game, ray);
 	perp_distance = r_distance * cos(r_angle - game->player.angle);
-	wall_height = game->win_height / perp_distance;
-	// wall_height = game->win_height / r_distance;
-	//DRAWING the ceiling
-	while (y < ((game->win_height) - wall_height) / 2)
-	{
-		if (game->img_data && game->img_data->addr)
-			my_mlx_pixel_put(game->img_data, x, y, game->scene.c_colors);
-		y++;
-	}
-	//DRAWING the wall
-	wall_end = y + (int)wall_height;
-	if (wall_end > game->win_height)
-		wall_end = game->win_height;
-	while (y < wall_end) 
-	{
-		if (game->img_data && game->img_data->addr)
-			my_mlx_pixel_put(game->img_data, x, y, 0x00662255);
-		y++;
-	}
-	//DRAWING the floor
-	while (y < (game->win_height))
-	{
-		if (game->img_data && game->img_data->addr)
-			my_mlx_pixel_put(game->img_data, x, y, game->scene.f_colors);
-		y++;
-	}
+	if (perp_distance < 0.01)
+		perp_distance = 0.01;
+	ray->wall_height = game->win_height / perp_distance;
+	draw_floor_ceiling(game, x);
+	if (ray->side == 0)
+		ray->wall_x = game->player.y + r_distance * sin(ray->angle);
+	else
+		ray->wall_x = game->player.x + r_distance * cos(ray->angle);
+	ray->wall_x = ray->wall_x - floor(ray->wall_x);
+	sample_texture(game, ray, game->textures[ray->wall_dir]);
 }
 
-void draw_3d_fov(t_game *game)
+void	draw_3d_fov(t_game *game)
 {
 	double	r_angle;
 	int		x;

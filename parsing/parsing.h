@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:37:51 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/29 14:27:18 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:54:46 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define CUB_ERR "Not a \".cub\" file"
 # define XPM_ERR "Not a \".xpm\" file"
 # define FILE_ERR "File does not exist"
+# define IMG_ERR "Incorrect image path/file"
 # define CONFIG_ERR "Invalid config elements"
 
 typedef struct s_pars
@@ -39,12 +40,12 @@ typedef struct s_scene
 	char	*s_path;
 	char	*e_path;
 	char	*w_path;
-	int		f_colors; //to_be_changed
-	int		c_colors; //ta_hya
+	int		f_color;
+	int		c_color;
 	char	**map;
 	int		map_height;
 	int		map_width;
-	char	**map_pad; //to remove and add to bonus
+	char	**map_pad;
 	t_pars	*pars;
 }	t_scene;
 
@@ -66,7 +67,6 @@ int				check_id_info(t_scene *scene, char *line);
 int				get_scene_info(t_scene *scene, char *filename);
 void			height_width(t_scene *scene);
 
-int				check_horizontal_walls(char **map);
 int				validate_map(t_scene *scene, char **map);
 char			**add_padding(t_scene scene);
 

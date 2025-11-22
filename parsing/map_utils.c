@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 22:12:28 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 18:54:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/19 16:24:38 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ char	**duplicate_map(char **map, int height)
 	char	**dup;
 
 	dup = gc_malloc(sizeof(char *) * (height + 1));
-	if (!dup)
-		return (NULL);
 	i = -1;
 	while (++i < height)
+	{
 		dup[i] = ft_strdup(map[i]);
+	}
 	dup[i] = NULL;
 	return (dup);
 }

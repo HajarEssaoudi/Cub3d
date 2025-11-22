@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:36:25 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 21:55:56 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/08 11:44:42 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ int	no_empty_lines(t_scene *scene, char **conf_map)
 	{
 		if (scene->pars->unsplit[i] == '\n'
 			&& scene->pars->unsplit[i + 1] == '\n')
+		{
+			free(scene->pars->unsplit);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -107,5 +110,3 @@ int	get_scene_info(t_scene *scene, char *filename)
 	get_map_layout(scene, conf_map);
 	return (1);
 }
-
-//empty_lines`

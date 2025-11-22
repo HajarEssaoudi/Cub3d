@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 22:48:37 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/29 10:23:39 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:40:52 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ static int	check_walls(char **map)
 		while (map[i][j])
 		{
 			skip_whitespace(map[i], &j);
-			if (map[i][j] != '1')
+			if (map[i][j] != '1' && map[i][j] != '_')
 				return (0);
 			while (map[i][j] && !is_space(map[i][j]))
 				j++;
-			if (map[i][j - 1] != '1')
+			if (map[i][j - 2] != '1' && map[i][j - 1] == '_')
 				return (0);
 		}
 		i++;
@@ -78,7 +78,7 @@ static int	check_walls(char **map)
 	return (1);
 }
 
-int	check_horizontal_walls(char **map)
+int	check_horizontal_walls(char **map, int height, int width)
 {
 	int	i;
 	int	j;
@@ -91,9 +91,13 @@ int	check_horizontal_walls(char **map)
 		{
 			if (is_valid_element(map[i][j]) && map[i][j] != '1')
 			{
-				if (map[i - 1][j] == '_' || map[i + 1][j] == '_')
+				if (i - 1 < 0 || map[i - 1][j] == '_')
 					return (0);
-				if (map[i][j - 1] == '_' || map[i][j + 1] == '_')
+				if (i + 1 >= height || map[i + 1][j] == '_')
+					return (0);
+				if (j - 1 < 0 || map[i][j - 1] == '_')
+					return (0);
+				if (j + 1 >= width || map[i][j + 1] == '_')
 					return (0);
 			}
 			j++;
@@ -103,19 +107,19 @@ int	check_horizontal_walls(char **map)
 	return (1);
 }
 
-int	validate_map(t_scene *scene, char **map)
+int	validate_map(t_scene *sc, char **map)
 {
 	if (!map || !map[0])
 		error_exit(NULL, EMPTY_ERR);
-	if (!check_walls(map))
+	height_width(sc);
+	sc->map_pad = add_padding(*sc);
+	if (!check_walls(sc->map_pad))
 		error_exit(NULL, WALL_ERR);
 	if (!no_foreign_elements(map))
 		error_exit(NULL, MAP_ERR);
 	if (!has_unique_elements(map))
 		error_exit(NULL, MAP_ERR);
-	height_width(scene);
-	scene->map_pad = add_padding(*scene);
-	if (!check_horizontal_walls(scene->map_pad))
+	if (!check_horizontal_walls(sc->map_pad, sc->map_height, sc->map_width))
 		error_exit(NULL, WALL_ERR);
 	return (1);
 }

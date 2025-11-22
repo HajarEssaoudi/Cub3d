@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 11:33:58 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 17:54:06 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:12:07 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	print_error(char *err)
 void	error_exit(t_scene *scene, char *err)
 {
 	(void) scene;
+	gc_free_all();
 	print_error(err);
 	exit(0);
 }

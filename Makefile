@@ -1,16 +1,17 @@
 NAME = cub3d
 
 LIBFT = ./includes/libft/libft.a
-MLX_DIR = /usr/include/minilibx-linux
+MLX_DIR = includes/minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 
 SRCS = parsing/scene_utils.c parsing/check_utils.c parsing/config_pars.c \
        parsing/error_handle.c parsing/map_pars.c parsing/map_utils.c parsing/file_utils.c \
-       render/ray_cast.c render/window.c render/mini_map.c\
+       render/ray_cast.c render/window.c render/ray_utils.c render/keyboard_utils.c \
+	   render/textures.c render/texture_init.c \
 	   exit_game/exit_game.c \
        includes/gnl/get_next_line.c includes/gnl/get_next_line_utils.c \
        includes/garbage_collector/stdgc.c \
-       main.c
+       main_utils.c main.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -40,10 +41,13 @@ fclean: clean
 	rm -f $(NAME)
 	make -C includes/libft fclean
 
+bonus: all
+	
+
 run: all clean
 	clear ; ./$(NAME) maps/scene.cub
 
 valgrind: all clean
-	./$(NAME) maps/scene.cub
+	clear ; valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) maps/scene.cub
 
 re: fclean all
