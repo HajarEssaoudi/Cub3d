@@ -30,7 +30,6 @@ char	*ft_strdup(const char *str)
 	while (i < len)
 	{
 		dup[i] = str[i];
-		printf("dup[i] : %c\n", str[i]);
 		i++;
 	}
 	dup[i] = '\0';

@@ -20,7 +20,15 @@ void	print_error(char *err)
 
 void	error_exit(t_scene *scene, char *err)
 {
-	(void) scene;
+	if (scene)
+	{
+		if (scene->pars && scene->pars->unsplit)
+		{
+			free(scene->pars->unsplit);
+			scene->pars->unsplit = NULL;
+		}
+	}
+	get_next_line(-1);
 	gc_free_all();
 	print_error(err);
 	exit(0);

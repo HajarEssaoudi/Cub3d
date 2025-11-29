@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:40:57 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 19:06:41 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/11/08 12:08:48 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "../garbage_collector/stdgc.h"
+# include "../garbage_collector/stdgc.h"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

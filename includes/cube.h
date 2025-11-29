@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:20:29 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/22 20:35:13 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/23 17:11:06 by hatim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # define ESC 65307
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
-# define WINDOW_HEIGHT 800
+# define WINDOW_HEIGHT 700
 # define WINDOW_WIDTH 1200
 # define PI 3.1415926535
-# define MOVE_SPEED 0.04
-# define ROT_SPEED 2.0
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 6.0
 
 typedef enum e_dir
 {

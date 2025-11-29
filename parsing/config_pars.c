@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_pars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 14:20:53 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/18 15:11:28 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/11/29 12:02:19 by hatim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	check_id_info(t_scene *scene, char *line)
 	split_line = ft_split(line, ' ');
 	if (!split_line)
 		return (0);
-	if (split_line[2])
+	if (split_line[2] || !split_line[0] || !split_line[1])
 		return (0);
 	id = ft_strdup(split_line[0]);
 	info = ft_strdup(split_line[1]);

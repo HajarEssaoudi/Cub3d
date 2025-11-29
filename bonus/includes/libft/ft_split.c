@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:04:32 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/10/24 20:52:04 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/11/08 12:07:49 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,9 @@ static size_t	word_len(char const *s, char c)
 	return (len);
 }
 
-// static char	**free_word(char **str, size_t i)
-// {
-// 	while (i > 0)
-// 	{
-// 		free(str[i]);
-// 		i--;
-// 	}
-// 	free(str);
-// 	return (NULL);
-// }
-
 static char	**ft_mal(size_t i, char c, const char *s, char **str)
 {
 	str[i] = (char *)gc_malloc(word_len(s, c) + 1);
-	// if (!str[i])
-	// 	return (free_word(str, i));
 	return (str);
 }
 
