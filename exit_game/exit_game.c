@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:36:07 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/07 19:07:47 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/11/30 10:44:33 by hatim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ void	free_game(t_game *game)
 	}
 }
 
-int	handle_close_button(t_game *game)
+
+int	handle_close_button(void *param)
 {
-	free_game(game);
-	gc_free_all();
-	exit(0);
-	return (0);
+    t_game *game = (t_game *)param;
+    get_next_line(-1);
+    free_game(game);
+    gc_free_all();
+    exit(0);
+    return (0);
 }

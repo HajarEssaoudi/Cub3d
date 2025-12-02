@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures_bonus.c                                   :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:14:29 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/30 09:08:36 by hatim            ###   ########.fr       */
+/*   Updated: 2025/11/29 18:59:25 by hatim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../includes/cube.h"
 
 int	get_color(t_texture tex, int tex_x, int tex_y)
 {
@@ -32,13 +32,13 @@ void	draw_ray_tex(t_game *game, t_ray *ray, int draw_start, t_texture tex)
 		draw_end = game->win_height - 1;
 	while (y < draw_end)
 	{
-		ray->tex.y = (int)ray->tex.pos;
-		if (ray->tex.y >= 0 && ray->tex.y < tex.height)
+		ray->tex->y = (int)ray->tex->pos;
+		if (ray->tex->y >= 0 && ray->tex->y < tex.height)
 		{
-			color = get_color(tex, ray->tex.x, ray->tex.y);
+			color = get_color(tex, ray->tex->x, ray->tex->y);
 			my_mlx_pixel_put(game->img_data, ray->window_x, y, color);
 		}
-		ray->tex.pos += ray->tex.step;
+		ray->tex->pos += ray->tex->step;
 		y++;
 	}
 }
@@ -46,12 +46,14 @@ void	draw_ray_tex(t_game *game, t_ray *ray, int draw_start, t_texture tex)
 void	sample_texture(t_game *game, t_ray *ray, t_texture texture)
 {
 	int		start;
-	ray->tex.step = (double)texture.height / ray->wall_height;
-	ray->tex.x = (int)(ray->wall_x * texture.width);
+
+	ray->tex = gc_malloc(sizeof(t_ray_tex));
+	ray->tex->step = (double)texture.height / ray->wall_height;
+	ray->tex->x = (int)(ray->wall_x * texture.width);
 	start = (game->win_height / 2) - (ray->wall_height / 2);
 	if (start < 0)
 		start = 0;
-	ray->tex.pos = (start - (game->win_height / 2 - ray->wall_height / 2))
-		* ray->tex.step;
+	ray->tex->pos = (start - (game->win_height / 2 - ray->wall_height / 2))
+		* ray->tex->step;
 	draw_ray_tex(game, ray, start, texture);
 }
