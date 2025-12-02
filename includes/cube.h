@@ -6,7 +6,7 @@
 /*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:20:29 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/23 17:11:06 by hatim            ###   ########.fr       */
+/*   Updated: 2025/11/30 10:45:12 by hatim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ void	move_player(t_game *game, double *x, double *y);
 double	deg_to_rad(double angle);
 
 /* Mlx utils*/
-int		handle_keypress(int keycode, t_game *game);
-int		handle_keyrelease(int keycode, t_game *game);
+int	handle_keypress(int keycode, void *param);
+int	handle_keyrelease(int keycode, void *param);
+int	handle_close_button(void *param);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 
 /*Exit game*/
-int		handle_close_button(t_game *game);
 void	free_game(t_game *game);
 
 void	init_game(t_game *game, t_scene *scene);
