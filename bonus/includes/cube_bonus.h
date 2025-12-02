@@ -34,8 +34,8 @@
 
 # define PI 3.1415926535
 
-# define MOVE_SPEED 0.04
-# define ROT_SPEED 4.0
+# define MOVE_SPEED 0.02
+# define ROT_SPEED 2.0
 
 # define TILE_SIZE 15
 
