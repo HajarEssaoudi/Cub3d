@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:16:43 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/12/03 23:17:39 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:46:10 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,17 @@ void	render_window(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
+	{
+		ft_putstr_fd("Mlx init failed\n", 2);
 		return ;
+	}
 	game->win = mlx_new_window(game->mlx,
 			game->win_width, game->win_height, "Cub3D");
 	if (!game->win)
+	{
+		ft_putstr_fd("Mlx new window failed\n", 2);
 		return ;
+	}
 	init_img(game);
 	init_textures(game);
 	draw_3d_fov(game);

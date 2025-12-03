@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:36:07 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/12/03 23:00:51 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:45:59 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	free_game(t_game *game)
 	while (i < 4)
 	{
 		if (game->textures[i].img)
+		{
 			mlx_destroy_image(game->mlx, game->textures[i].img);
+		}
 		i++;
 	}
-	if (game->img_data->img)
+	if (game->img_data && game->img_data->img)
 		mlx_destroy_image(game->mlx, game->img_data->img);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
