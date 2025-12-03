@@ -14,7 +14,7 @@
 # define CUBE_H
 
 # include "../parsing/parsing_bonus.h"
-# include "./minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
 

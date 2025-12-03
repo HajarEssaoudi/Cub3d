@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:14:29 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/30 09:08:36 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 19:10:58 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_ray_tex(t_game *game, t_ray *ray, int draw_start, t_texture tex)
 	draw_end = draw_start + ray->wall_height;
 	if (draw_end >= game->win_height)
 		draw_end = game->win_height - 1;
-	while (y < draw_end)
+	while (y <= draw_end)
 	{
 		ray->tex.y = (int)ray->tex.pos;
 		if (ray->tex.y >= 0 && ray->tex.y < tex.height)

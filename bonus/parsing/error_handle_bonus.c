@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 11:33:58 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/23 15:57:32 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 19:36:02 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ void	error_exit(t_scene *scene, char *err)
 	if (scene)
 	{
 		if (scene->pars && scene->pars->unsplit)
-		{
-			free(scene->pars->unsplit);
 			scene->pars->unsplit = NULL;
-		}
 	}
 	get_next_line(-1);
-	gc_free_all();
+	gc_free_all();	
 	print_error(err);
 	exit(0);
 }

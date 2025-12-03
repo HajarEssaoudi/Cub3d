@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:20:29 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/12/03 14:56:03 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:27:43 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUBE_H
 
 # include "../parsing/parsing.h"
-#include "/usr/include/minilibx-linux/mlx.h"
+# include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
 
