@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 11:33:58 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/07 19:12:07 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:18:51 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	error_exit(t_scene *scene, char *err)
 	{
 		if (scene->pars && scene->pars->unsplit)
 		{
-			free(scene->pars->unsplit);
 			scene->pars->unsplit = NULL;
 		}
 	}
