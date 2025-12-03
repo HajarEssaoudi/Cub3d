@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 16:50:41 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 18:47:55 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:48:49 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void	init_textures(t_game *g)
 	load_texture_image(g, SO, g->scene.s_path);
 	load_texture_image(g, EA, g->scene.e_path);
 	load_texture_image(g, WE, g->scene.w_path);
+	load_texture_image(g, DO, g->scene.d_path);
 	get_texture_data(g, NO);
 	get_texture_data(g, SO);
 	get_texture_data(g, EA);
 	get_texture_data(g, WE);
+	get_texture_data(g, DO);
 }

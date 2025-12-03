@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_pars_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 14:20:53 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 12:25:19 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:50:46 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	id_type(t_scene *scene, char *id, char *info)
 			return (scene->e_path = ft_strdup(info), 1);
 		if (ft_strncmp(id, "WE", 2) == 0 && check_path(scene, info))
 			return (scene->w_path = ft_strdup(info), 1);
+		if (ft_strncmp(id, "DO", 2) == 0 && check_path(scene, info))
+			return (scene->d_path = ft_strdup(info), 1);
 		return (0);
 	}
 	return (0);

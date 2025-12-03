@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:37:51 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 13:05:36 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:42:57 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_scene
 	char	*s_path;
 	char	*e_path;
 	char	*w_path;
+	char	*d_path;
 	int		f_color;
 	int		c_color;
 	char	**map;

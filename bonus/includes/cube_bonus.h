@@ -44,7 +44,8 @@ typedef enum e_dir
 	NO,
 	SO,
 	EA,
-	WE
+	WE,
+	DO
 }	t_dir;
 
 typedef struct s_keys
@@ -121,7 +122,7 @@ typedef struct s_ray
 	double		angle;
 	double		wall_x;
 	double		wall_height;
-	 t_ray_tex	tex;
+	t_ray_tex	tex;
 	t_dir		wall_dir;
 }	t_ray;
 
@@ -133,7 +134,7 @@ void	draw_mini_map(t_game *game);
 void	init_ray(t_game *game, double r_angle, t_ray *ray, int x);
 double	count_dist(t_game *game, t_ray *ray);
 void	init_textures(t_game *game);
-void	get_wall_dir(t_ray *ray);
+void	get_wall_dir(t_ray *ray, int is_door);
 void	sample_texture(t_game *game, t_ray *ray, t_texture texture);
 
 /* Movement */

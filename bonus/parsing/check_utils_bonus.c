@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 10:05:27 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/23 15:57:09 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:01:27 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_player(char c)
 
 int	is_valid_element(char c)
 {
-	return (c == '1' || c == '0' || is_player(c) || is_space(c));
+	return (c == '1' || c == '0' || is_player(c) || is_space(c) || c == 'D');
 }
 
 int	ft_strstr_index(const char *big, const char *small)

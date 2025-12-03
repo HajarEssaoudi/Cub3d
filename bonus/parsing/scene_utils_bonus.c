@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:36:25 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/23 15:58:27 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 23:00:50 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	no_empty_lines(t_scene *scene, char **conf_map)
 {
 	int	i;
 
-	i = ft_strstr_index(scene->pars->unsplit, conf_map[6]);
+	i = ft_strstr_index(scene->pars->unsplit, conf_map[7]);
 	if (i < 0)
 		return (0);
 	while (scene->pars->unsplit[i])
@@ -96,7 +96,7 @@ int	get_scene_info(t_scene *scene, char *filename)
 	conf_map = return_scene(scene, filename);
 	if (!conf_map)
 		error_exit(scene, EMPTY_ERR);
-	while (i < 6)
+	while (i < 7)
 	{
 		if (!check_id_info(scene, conf_map[i]))
 			error_exit(scene, CONFIG_ERR);

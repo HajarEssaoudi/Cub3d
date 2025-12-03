@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 11:09:46 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 14:16:08 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:33:30 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube_bonus.h"
 
-void	dda_loop(t_game *game, t_ray *ray, double *side_dx, double *side_dy)
+char	dda_loop(t_game *game, t_ray *ray, double *side_dx, double *side_dy)
 {
 	while (1)
 	{
@@ -22,7 +22,7 @@ void	dda_loop(t_game *game, t_ray *ray, double *side_dx, double *side_dy)
 			ray->map_x += ray->step_x;
 			if (game->scene.map[ray->map_y][ray->map_x] != '0'
 				&& !is_player(game->scene.map[ray->map_y][ray->map_x]))
-				break ;
+				return (game->scene.map[ray->map_y][ray->map_x]);
 			else
 				*side_dx += ray->delta_x;
 		}
@@ -32,7 +32,7 @@ void	dda_loop(t_game *game, t_ray *ray, double *side_dx, double *side_dy)
 			ray->map_y += ray->step_y;
 			if (game->scene.map[ray->map_y][ray->map_x] != '0'
 				&& !is_player(game->scene.map[ray->map_y][ray->map_x]))
-				break ;
+				return (game->scene.map[ray->map_y][ray->map_x]);
 			else
 				*side_dy += ray->delta_y;
 		}
@@ -56,8 +56,10 @@ double	count_dist(t_game *game, t_ray *ray)
 		dist_to_y = game->player.y - floor(game->player.y);
 	side_dx = dist_to_x / fabs(cos(ray->angle));
 	side_dy = dist_to_y / fabs(sin(ray->angle));
-	dda_loop(game, ray, &side_dx, &side_dy);
-	get_wall_dir(ray);
+	if (dda_loop(game, ray, &side_dx, &side_dy) == '1')
+		get_wall_dir(ray, 0);
+	else
+		get_wall_dir(ray, 1);
 	if (ray->side == 0)
 		return (side_dx);
 	else

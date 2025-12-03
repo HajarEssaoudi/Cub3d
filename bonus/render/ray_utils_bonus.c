@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 21:28:56 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 14:16:00 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 22:37:30 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ void	init_ray(t_game *game, double r_angle, t_ray *ray, int x)
 	ray->wall_height = 0;
 }
 
-void	get_wall_dir(t_ray *ray)
+void	get_wall_dir(t_ray *ray, int is_door)
 {
-	if (ray->side == 0)
+	if (is_door)
+		ray->wall_dir = DO;
+	else if (ray->side == 0)
 	{
 		if (ray->step_x > 0)
 			ray->wall_dir = WE;
