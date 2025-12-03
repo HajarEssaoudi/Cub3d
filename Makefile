@@ -1,7 +1,7 @@
 NAME = cub3d
 
 LIBFT = ./includes/libft/libft.a
-MLX_DIR = includes/minilibx-linux
+MLX_DIR = /usr/include/minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 
 SRCS = parsing/scene_utils.c parsing/check_utils.c parsing/config_pars.c \

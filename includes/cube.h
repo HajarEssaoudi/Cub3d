@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:20:29 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/30 10:45:12 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 14:56:03 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define CUBE_H
 
 # include "../parsing/parsing.h"
-# include "./minilibx-linux/mlx.h"
+#include "/usr/include/minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
-# define FOV 80
+# define FOV 70
 # define W 119
 # define S 115
 # define A 97
@@ -30,8 +30,8 @@
 # define WINDOW_HEIGHT 700
 # define WINDOW_WIDTH 1200
 # define PI 3.1415926535
-# define MOVE_SPEED 0.05
-# define ROT_SPEED 6.0
+# define MOVE_SPEED 0.02
+# define ROT_SPEED 2.0
 
 typedef enum e_dir
 {
