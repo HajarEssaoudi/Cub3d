@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 22:48:37 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/23 15:57:49 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/04 00:17:15 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,26 @@ static int	has_unique_elements(char **map)
 	return (p == 1);
 }
 
-static int	check_walls(char **map)
+static int	check_walls(char **m)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (map[i])
+	while (m[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (m[i][j])
 		{
-			skip_whitespace(map[i], &j);
-			if (map[i][j] != '1' && map[i][j] != '_')
+			skip_whitespace(m[i], &j);
+			if (m[i][j] != '1' && m[i][j] != '_')
+			{
+				printf("%s\n", m[i]);
 				return (0);
-			while (map[i][j] && !is_space(map[i][j]))
+			}
+			while (m[i][j] && !is_space(m[i][j]))
 				j++;
-			if (map[i][j - 2] != '1' && map[i][j - 1] == '_')
+			if (m[i][j - 2] != '1' && m[i][j - 2] != '_' && m[i][j - 1] == '_')
 				return (0);
 		}
 		i++;

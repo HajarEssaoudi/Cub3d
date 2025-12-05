@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:57:45 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/30 10:44:09 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/04 00:19:45 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,39 @@ void	move_player(t_game *game, double *x, double *y)
 
 int	handle_keypress(int keycode, void *param)
 {
-    t_game *game = (t_game *)param;
-    if (keycode == ESC)
-    {
-        free_game(game);
-        gc_free_all();
-        exit(0);
-    }
-    if (!game->keys)
-        return (0);
-    check_key(keycode, game);
-    return (0);
+	t_game	*game;
+
+	game = (t_game *)param;
+	if (keycode == ESC)
+	{
+		free_game(game);
+		gc_free_all();
+		exit(0);
+	}
+	if (!game->keys)
+		return (0);
+	check_key(keycode, game);
+	return (0);
 }
 
 int	handle_keyrelease(int keycode, void *param)
 {
-    t_game *game = (t_game *)param;
-    if (!game->keys)
-        return (0);
-    if (keycode == W)
-        game->keys->w = 0;
-    else if (keycode == S)
-        game->keys->s = 0;
-    else if (keycode == D)
-        game->keys->d = 0;
-    else if (keycode == A)
-        game->keys->a = 0;
-    else if (keycode == RIGHT_ARROW)
-        game->keys->right = 0;
-    else if (keycode == LEFT_ARROW)
-        game->keys->left = 0;
-    return (0);
-}
+	t_game	*game;
 
+	game = (t_game *)param;
+	if (!game->keys)
+		return (0);
+	if (keycode == W)
+		game->keys->w = 0;
+	else if (keycode == S)
+		game->keys->s = 0;
+	else if (keycode == D)
+		game->keys->d = 0;
+	else if (keycode == A)
+		game->keys->a = 0;
+	else if (keycode == RIGHT_ARROW)
+		game->keys->right = 0;
+	else if (keycode == LEFT_ARROW)
+		game->keys->left = 0;
+	return (0);
+}

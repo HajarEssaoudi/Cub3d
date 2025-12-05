@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 21:16:43 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/29 18:46:09 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/04 00:03:50 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static int	loop_update(void *param)
 		&& x > 1 && x < (game->scene.map_width - 1)
 		&& game->scene.map[(int)(y)][(int)(x)] != '1'
 		&& game->scene.map[(int)(y)][(int)(x)] != '\0'
-		&& game->scene.map_pad[(int)(y)][(int)(x)] != '_')
+		&& game->scene.map_pad[(int)(y)][(int)(x)] != '_'
+		&& game->scene.map[(int)(y)][(int)(x)] != 'D')
 	{
 		game->player.x = x;
 		game->player.y = y;

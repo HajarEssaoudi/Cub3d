@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:36:25 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/12/03 23:00:50 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:38:53 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	get_map_layout(t_scene *scene, char **conf_map)
 	}
 	while (conf_map[height] && *conf_map[height] != '\n')
 		height++;
-	scene->map = gc_malloc(sizeof(char *) * ((height - 6) + 1));
+	scene->map = gc_malloc(sizeof(char *) * ((height - 7) + 1));
 	if (!scene->map)
 		return ;
 	height = 0;
-	i = 6;
+	i = 7;
 	while (conf_map[i])
 		scene->map[height++] = ft_strdup(conf_map[i++]);
 	scene->map[height] = NULL;

@@ -18,7 +18,7 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define FOV 70
+# define FOV 80
 
 # define W 119
 # define S 115
@@ -28,6 +28,7 @@
 # define ESC 65307
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
+# define ENTER 65293
 
 # define WINDOW_HEIGHT 700
 # define WINDOW_WIDTH 1200
@@ -122,6 +123,7 @@ typedef struct s_ray
 	double		angle;
 	double		wall_x;
 	double		wall_height;
+	double		distance;
 	t_ray_tex	tex;
 	t_dir		wall_dir;
 }	t_ray;

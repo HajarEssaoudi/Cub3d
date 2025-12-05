@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 22:48:37 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/19 16:40:52 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:16:41 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	check_walls(char **map)
 				return (0);
 			while (map[i][j] && !is_space(map[i][j]))
 				j++;
-			if (map[i][j - 2] != '1' && map[i][j - 1] == '_')
+			if (map[i][j - 2] != '1' && map[i][j - 2] != '_' && map[i][j - 1] == '_')
 				return (0);
 		}
 		i++;

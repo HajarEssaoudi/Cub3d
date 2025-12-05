@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_init_bonus.c                               :+:      :+:    :+:   */
+/*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 16:50:41 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 18:53:09 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/03 23:22:52 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static void	load_texture_image(t_game *g, int direction, char *path)
 	g->textures[direction].img = mlx_xpm_file_to_image(g->mlx, path,
 			&g->textures[direction].width, &g->textures[direction].height);
 	if (!g->textures[direction].img)
+	{
+		free_game(g);
 		error_exit(&(g->scene), IMG_ERR);
+	}
 }
 
 static void	get_texture_data(t_game *g, int direction)
@@ -28,7 +31,10 @@ static void	get_texture_data(t_game *g, int direction)
 			&g->textures[direction].line_length,
 			&g->textures[direction].endian);
 	if (!g->textures[direction].addr)
+	{
+		free_game(g);
 		error_exit(&(g->scene), IMG_ERR);
+	}
 }
 
 void	init_textures(t_game *g)

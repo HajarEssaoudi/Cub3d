@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:57:45 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/11/29 17:37:58 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/04 00:23:03 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void	move_player(t_game *game, double *x, double *y)
 		game->player.angle += deg_to_rad(ROT_SPEED);
 }
 
+void	handle_door()
+{
+	
+}
+
 int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == ESC)
@@ -67,6 +72,10 @@ int	handle_keypress(int keycode, t_game *game)
 		free_game(game);
 		gc_free_all();
 		exit(0);
+	}
+	if (keycode == ENTER)
+	{
+		
 	}
 	if (!game->keys)
 		return (0);

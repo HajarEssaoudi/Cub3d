@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hatim <hqannouc@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: hqannouc <hqannouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 11:36:07 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/11/30 10:44:33 by hatim            ###   ########.fr       */
+/*   Updated: 2025/12/04 00:20:30 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	free_game(t_game *game)
 		free(game->mlx);
 	}
 }
-
 
 int	handle_close_button(void *param)
 {
