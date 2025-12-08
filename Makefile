@@ -40,7 +40,7 @@ CFLAGS = -g -Wall -Wextra -Werror -I$(MLX_DIR) -Iincludes/libft -Iincludes/gnl -
 all: $(LIBFT) $(MLX) $(NAME)
 
 $(LIBFT):
-	make -C includes/libft
+	make -C mandatory/includes/libft
 
 $(MLX):
 	make -C $(MLX_DIR)
@@ -59,12 +59,12 @@ $(NAME)_bonus: $(BONUS_OBJS)
 clean:
 	rm -f $(OBJS)
 	rm -f $(BONUS_OBJS)
-	make -C includes/libft clean
+	make -C mandatory/includes/libft clean
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(NAME)_bonus
-	make -C includes/libft fclean
+	make -C mandatory/includes/libft fclean
 
 bonus: $(LIBFT) $(MLX) $(NAME)_bonus
 

@@ -6,7 +6,7 @@
 /*   By: hqannouc <hqannouc@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:36:25 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/12/08 23:10:11 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/12/09 00:34:09 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ int	get_scene_info(t_scene *scene, char *filename)
 	while (i < 6)
 	{
 		if (!check_id_info(scene, conf_map[i]))
+		{
+			free(scene->pars->unsplit);
 			error_exit(scene, CONFIG_ERR);
+		}
 		i++;
 	}
 	if (!check_null_config(scene))
