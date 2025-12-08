@@ -1,17 +1,17 @@
 NAME = cub3d
 
-LIBFT = ./includes/libft/libft.a
+LIBFT = mandatory/includes/libft/libft.a
 MLX_DIR = /usr/include/minilibx-linux
 MLX = $(MLX_DIR)/libmlx.a
 
-SRCS = parsing/scene_utils.c parsing/check_utils.c parsing/config_pars.c \
-       parsing/error_handle.c parsing/map_pars.c parsing/map_utils.c parsing/file_utils.c \
-       render/ray_cast.c render/window.c render/ray_utils.c render/keyboard_utils.c \
-	   render/textures.c render/texture_init.c \
-	   exit_game/exit_game.c \
-       includes/gnl/get_next_line.c includes/gnl/get_next_line_utils.c \
-       includes/garbage_collector/stdgc.c \
-       main_utils.c main.c \
+SRCS = mandatory/parsing/scene_utils.c mandatory/parsing/check_utils.c mandatory/parsing/config_pars.c \
+       mandatory/parsing/error_handle.c mandatory/parsing/map_pars.c mandatory/parsing/map_utils.c mandatory/parsing/file_utils.c \
+       mandatory/render/ray_cast.c mandatory/render/window.c mandatory/render/ray_utils.c mandatory/render/keyboard_utils.c \
+	   mandatory/render/textures.c mandatory/render/texture_init.c \
+	   mandatory/exit_game/exit_game.c \
+       mandatory/includes/gnl/get_next_line.c mandatory/includes/gnl/get_next_line_utils.c \
+       mandatory/includes/garbage_collector/stdgc.c \
+       mandatory/main_utils.c mandatory/main.c \
 
 BONUS_SRCS = bonus/parsing/scene_utils_bonus.c bonus/parsing/check_utils_bonus.c \
 			 bonus/parsing/config_pars_bonus.c bonus/parsing/error_handle_bonus.c \
@@ -68,10 +68,6 @@ fclean: clean
 
 bonus: $(LIBFT) $(MLX) $(NAME)_bonus
 
-run: all clean
-	clear ; ./$(NAME) maps/scene.cub
-
-valgrind: all clean
-	clear ; valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) maps/scene.cub
-
 re: fclean all
+
+.PHONY: all clean fclean re bonus
